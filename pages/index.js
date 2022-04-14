@@ -5,9 +5,9 @@ export default function Home({ results }) {
   return (
     <div className="container">
       <Seo title="Home" />
-      {results?.map(movie => (
+      {results?.map((movie) => (
         <div className="movie" key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
         </div>
       ))}
@@ -17,6 +17,9 @@ export default function Home({ results }) {
           grid-template-columns: 1fr 1fr;
           padding: 20px;
           gap: 20px;
+        }
+        .movie {
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;
@@ -42,7 +45,7 @@ export async function getServerSideProps() {
   ).json();
   return {
     props: {
-      results
-    }
+      results,
+    },
   };
 }
